@@ -35,3 +35,10 @@ Voto di Laurea: 72,
 Voto di Test: 89.
 Iscrizione corsi di laurea: (Biologia, Chimica).
 !!!
+Nome e Cognome: Mirco Perna,
+Codice Fiscale: PRNMRC99D09G273P,
+Data di Nascita: 09/04/2004,
+Voto di Laurea: 100,
+Voto di Test: 90.
+Iscrizione corsi di laurea: (Medicina, Chimica).
+!!!
