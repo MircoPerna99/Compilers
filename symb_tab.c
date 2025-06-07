@@ -219,15 +219,15 @@ void calculate_ranking(){
 								{
 									while(ranking->next != NULL)
 									{
-										if(check_node(ranking->next, new_ranking))
+										if(check_node(ranking->next, new_ranking) > 0)
+										{
+											ranking = ranking->next;
+										}
+										else
 										{
 											new_ranking->next = ranking->next;
 											ranking->next = new_ranking;
 											break;
-										}
-										else
-										{
-											ranking = ranking->next;
 										}
 									}
 
