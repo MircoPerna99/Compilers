@@ -27,19 +27,19 @@
 main: ACADEMIC_YEAR  DEGREE_COURSES_SECTION Degree_Courses_Section CANDIDATES_SECTION Candidates_Section
 
 Degree_Courses_Section:  | Degree_Courses_Section Degre_Course
-Degre_Course: DEGREE_COURSE ARROW INT DIVEDER INT DIVEDER INT END_COURSE_REQUIREMENTS{ printf("%s %d %d %d\n", $1, $3, $5, $7);insert_course($1, $3, $5, $7);} 
+Degre_Course: DEGREE_COURSE ARROW INT DIVEDER INT DIVEDER INT END_COURSE_REQUIREMENTS{insert_course($1, $3, $5, $7);} 
 
 Candidates_Section: | Candidates_Section Candidate_Properties;
-Candidate_Properties: Candidate Fiscal_Code Birthdate Degree_Vote Test_Vote Selected_Courses CANDIDATE_END_PROPERTY
+Candidate_Properties: Candidate Fiscal_Code Birthdate Degree_Vote Test_Vote Selected_Courses CANDIDATE_END_PROPERTY {insert_candidate();}
 
-Candidate : CANDIDATE_NAME_PROPERTY EQUAL_TO STRING_VALUE DIVEDER 
-Fiscal_Code : CANDIDATE_FISCAL_CODE_PROPERTY EQUAL_TO FISCAL_CODE DIVEDER
-Birthdate : CANDIDATE_BIRTHDATE_PROPERTY EQUAL_TO DATE_VALUE DIVEDER
-Degree_Vote : CANDIDATE_DEGREE_VOTE_PROPERTY EQUAL_TO INT DIVEDER
-Test_Vote : CANDIDATE_TEST_VOTE_PROPERTY EQUAL_TO INT END_CANDIDATE_GENERAL_INFORMATION
+Candidate : CANDIDATE_NAME_PROPERTY EQUAL_TO STRING_VALUE DIVEDER  {insert_candidate_name($3);} 
+Fiscal_Code : CANDIDATE_FISCAL_CODE_PROPERTY EQUAL_TO FISCAL_CODE DIVEDER  {insert_candidate_fiscal_code($3);} 
+Birthdate : CANDIDATE_BIRTHDATE_PROPERTY EQUAL_TO DATE_VALUE DIVEDER {insert_candidate_birthdate($3);} 
+Degree_Vote : CANDIDATE_DEGREE_VOTE_PROPERTY EQUAL_TO INT DIVEDER {insert_candidate_degree_vote($3);} 
+Test_Vote : CANDIDATE_TEST_VOTE_PROPERTY EQUAL_TO INT END_CANDIDATE_GENERAL_INFORMATION {insert_candidate_test_vote($3);} 
 Selected_Courses : CANDIDATE_COURSE_PROPERTY EQUAL_TO CANDIDATE_COURSE_PROPERTY_START Courses CANDIDATE_COURSE_PROPERTY_END END_CANDIDATE_GENERAL_INFORMATION
-Courses : STRING_VALUE | Courses DIVEDER STRING_VALUE 
-
+Courses : Course_Selected  | Courses DIVEDER Course_Selected 
+Course_Selected : STRING_VALUE {insert_candidate_course_selected($1);} 
 %%
 extern int current_line;
 
@@ -51,5 +51,6 @@ void yyerror(char *s) {
 int main() {
     if (yyparse()==0){
         print_courses();
+        print_candidates();
     }
 }
