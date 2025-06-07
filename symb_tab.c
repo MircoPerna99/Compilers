@@ -24,35 +24,39 @@ course *lookup_course(char *name) {
 	return NULL;
 }
 
-//inserimento della fascia
-int insert_course(char* name_course, int amount_of_place_available, int degree_vote, int test_vote){	
-	//  printf("Prova");
-	// if(lookup_course(name_course)!=NULL){
-	// 	return 0;
-	// }
+//Insert new course
+int insert_course(char *name_course, int amount_of_place_available, int degree_vote, int test_vote){	
 
-	// unsigned int hash_index =  hash(name_course);
-	
-	// course *new_course;
-	// new_course->name = name_course;
-	// new_course->amount_of_place_available = amount_of_place_available;
-	// new_course->degree_vote = degree_vote;
-	// new_course->test_vote = test_vote;
-	// new_course->next = hash_table_courses[hash_index];
+	if(lookup_course(name_course)!=NULL){
+	 	return 0;
+	} 
+
+	unsigned int hash_index =  hash(name_course);
+
+	course *new_course;
+
+	if ((new_course = (course *)malloc(sizeof(*new_course)))==NULL)
+		return 0;
+
+	new_course->name = name_course;
+	new_course->amount_of_place_available = amount_of_place_available;
+	new_course->degree_vote = degree_vote;
+	new_course->test_vote = test_vote;
+	new_course->next = hash_table_courses[hash_index];
     
-    // hash_table_courses[hash_index] = new_course;
+    hash_table_courses[hash_index] = new_course;
 
 	return 1;
 }
 
 void print_courses() {
-	// course *ptr;
-	// printf("Courses:\n");
+	course *ptr;
+	printf("Courses:\n");
 	
 	
-	// for(int i = 0; i<HASHSIZE;i++){
-	// 	for(ptr = hash_table_courses[i]; ptr!=NULL; ptr = ptr->next){
-  	//                 printf("%s\n",ptr->name);
-	// 	 }
-	// }
+	for(int i = 0; i<HASHSIZE;i++){
+		for(ptr = hash_table_courses[i]; ptr!=NULL; ptr = ptr->next){
+  	                printf("%s\n",ptr->name);
+		 }
+	}
 }

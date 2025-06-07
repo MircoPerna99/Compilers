@@ -891,7 +891,7 @@ YY_RULE_SETUP
 case 3:
 YY_RULE_SETUP
 #line 36 "lexer.lex"
-{return (DEGREE_COURSE); }
+{yylval.str=strdup(yytext);return (DEGREE_COURSE); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP

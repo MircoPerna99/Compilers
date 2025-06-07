@@ -1434,9 +1434,14 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-      
+        case 5:
+#line 30 "parser.y"
+    { printf("%s %d %d %d\n", (yyvsp[(1) - (8)].str), (yyvsp[(3) - (8)].integer), (yyvsp[(5) - (8)].integer), (yyvsp[(7) - (8)].integer));insert_course((yyvsp[(1) - (8)].str), (yyvsp[(3) - (8)].integer), (yyvsp[(5) - (8)].integer), (yyvsp[(7) - (8)].integer));;}
+    break;
+
+
 /* Line 1267 of yacc.c.  */
-#line 1440 "parser.tab.c"
+#line 1445 "parser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);

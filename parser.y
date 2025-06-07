@@ -27,7 +27,7 @@
 main: ACADEMIC_YEAR  DEGREE_COURSES_SECTION Degree_Courses_Section CANDIDATES_SECTION Candidates_Section
 
 Degree_Courses_Section:  | Degree_Courses_Section Degre_Course
-Degre_Course: DEGREE_COURSE ARROW INT DIVEDER INT DIVEDER INT END_COURSE_REQUIREMENTS 
+Degre_Course: DEGREE_COURSE ARROW INT DIVEDER INT DIVEDER INT END_COURSE_REQUIREMENTS{ printf("%s %d %d %d\n", $1, $3, $5, $7);insert_course($1, $3, $5, $7);} 
 
 Candidates_Section: | Candidates_Section Candidate_Properties;
 Candidate_Properties: Candidate Fiscal_Code Birthdate Degree_Vote Test_Vote Selected_Courses CANDIDATE_END_PROPERTY

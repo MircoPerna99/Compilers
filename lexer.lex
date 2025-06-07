@@ -33,7 +33,7 @@ Comma ","
 {Course_Of_Study_Parameters_Section} {BEGIN(Degree_Courses_Section);return (DEGREE_COURSES_SECTION);}
 {Candidate_Parameters_Section} {BEGIN(Candidates_Section); return (CANDIDATES_SECTION);}
 
-<Degree_Courses_Section>{String_Value} {return (DEGREE_COURSE); }
+<Degree_Courses_Section>{String_Value} {yylval.str=strdup(yytext);return (DEGREE_COURSE); }
 <Degree_Courses_Section>{Divider_Course_Requirements} {return (DIVEDER); }
 <Degree_Courses_Section>{Dot} {return (END_COURSE_REQUIREMENTS); }
 
