@@ -40,6 +40,7 @@ unsigned int hash(char *id);
 candidate *lookup_candidate(char *fsc);
 course *lookup_course(char *name_course);
 
+int insert_academic_year(char *academic_year);
 int insert_candidate();
 int insert_candidate_name(char *name);
 int insert_candidate_fiscal_code(char *fiscal_code);

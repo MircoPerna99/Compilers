@@ -964,7 +964,7 @@ YY_RULE_SETUP
 case 18:
 YY_RULE_SETUP
 #line 54 "lexer.lex"
-{return (ACADEMIC_YEAR);}
+{yylval.str=strdup(yytext); return (ACADEMIC_YEAR);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP

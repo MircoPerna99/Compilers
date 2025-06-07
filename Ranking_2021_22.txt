@@ -1,0 +1,7 @@
+Ranking:
+Biologia->(Maria Rosselli:93.750000)->(Giorgia Conte:72.750000)
+Informatica->(Giuseppe Genovese:72.000000)
+Chimica->(Mirco Perna:57.750000)->(Giorgia Conte:47.950001)
+Fisica->(Giuseppe Genovese:77.000000)->(Francesco Amato:77.000000)
+Ingegneria Informatica->(Francesco Amato:65.000000)
+Medicina->(Maria Rosselli:75.000000)->(Mirco Perna:75.000000)

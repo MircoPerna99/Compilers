@@ -51,7 +51,7 @@ Comma ","
 <Candidates_Section>{Equal_To} {return (EQUAL_TO); }
 
  
-{Academic_Year} {return (ACADEMIC_YEAR);}
+{Academic_Year} {yylval.str=strdup(yytext); return (ACADEMIC_YEAR);}
 {Fiscal_Code} {yylval.str=strdup(yytext); return (FISCAL_CODE); }
 {Integer}  { yylval.integer=atoi(yytext);return (INT); }
 {Date_Value} { yylval.str=strdup(yytext); return (DATE_VALUE); }

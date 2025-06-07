@@ -4,6 +4,7 @@
 #include "symb_tab.h"
 
 candidate *candidate_to_insert;
+char *academic_year;
 
 float calculate_points(int high_school_vote_candidate, int test_vote_candidate,  int high_school_vote_course, int test_vote_course)
 {
@@ -95,7 +96,12 @@ course *lookup_course(char *name_course) {
 	return NULL;
 }
 
-//Insert new course
+int insert_academic_year(char *academic_year_input)
+{
+	academic_year = academic_year_input;
+	return 1;
+}
+
 int insert_candidate(){	
 
 	if(lookup_candidate(candidate_to_insert->fiscal_code)!=NULL){
@@ -312,21 +318,38 @@ void print_courses() {
 	}
 }
 
+void replace_char(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == '/') {
+            str[i] = '_';
+        }
+    }
+}
+
 void print_ranking()
 {
+    char filename[100];
+	replace_char(academic_year);
+    snprintf(filename, sizeof(filename), "Ranking_%s.txt", academic_year);
+	FILE *file = fopen(filename, "w");
 	course *ptr;
-	printf("Ranking:\n");
+
+	if (file == NULL) {
+        printf("Errore nell'apertura del file %s\n", filename);
+		exit(1);
+    }
+	fprintf(file,"Ranking:\n");
 	for(int i = 0; i<HASHSIZE;i++){
 		for(ptr = hash_table_courses[i]; ptr!=NULL; ptr = ptr->next){
-				printf("%s", ptr->name);
+				fprintf(file,"%s", ptr->name);
 				ranking_course *ranking = ptr->ranking;
   	            while(ranking != NULL)
 				{
-					printf("->(%s:%f)",ranking->candidate_name, ranking->score);
+					fprintf(file,"->(%s:%f)",ranking->candidate_name, ranking->score);
 
 					ranking = ranking->next;
 				}
-				printf("\n");
+				fprintf(file,"\n");
 		 }
 	}
 }

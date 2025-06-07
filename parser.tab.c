@@ -1435,7 +1435,12 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 5:
+        case 2:
+#line 27 "parser.y"
+    {insert_academic_year((yyvsp[(1) - (5)].str));;}
+    break;
+
+  case 5:
 #line 30 "parser.y"
     {insert_course((yyvsp[(1) - (8)].str), (yyvsp[(3) - (8)].integer), (yyvsp[(5) - (8)].integer), (yyvsp[(7) - (8)].integer));;}
     break;
@@ -1477,7 +1482,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 1481 "parser.tab.c"
+#line 1486 "parser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
