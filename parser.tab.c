@@ -73,7 +73,7 @@
      CANDIDATE_NAME_PROPERTY = 262,
      CANDIDATE_FISCAL_CODE_PROPERTY = 263,
      CANDIDATE_BIRTHDATE_PROPERTY = 264,
-     CANDIDATE_DEGREE_VOTE_PROPERTY = 265,
+     CANDIDATE_HIGH_SCHOOL_VOTE_PROPERTY = 265,
      CANDIDATE_TEST_VOTE_PROPERTY = 266,
      CANDIDATE_COURSE_PROPERTY = 267,
      CANDIDATE_COURSE_PROPERTY_START = 268,
@@ -100,7 +100,7 @@
 #define CANDIDATE_NAME_PROPERTY 262
 #define CANDIDATE_FISCAL_CODE_PROPERTY 263
 #define CANDIDATE_BIRTHDATE_PROPERTY 264
-#define CANDIDATE_DEGREE_VOTE_PROPERTY 265
+#define CANDIDATE_HIGH_SCHOOL_VOTE_PROPERTY 265
 #define CANDIDATE_TEST_VOTE_PROPERTY 266
 #define CANDIDATE_COURSE_PROPERTY 267
 #define CANDIDATE_COURSE_PROPERTY_START 268
@@ -489,7 +489,7 @@ static const char *const yytname[] =
   "$end", "error", "$undefined", "DEGREE_COURSES_SECTION",
   "CANDIDATES_SECTION", "DEGREE_COURSE", "END_COURSE_REQUIREMENTS",
   "CANDIDATE_NAME_PROPERTY", "CANDIDATE_FISCAL_CODE_PROPERTY",
-  "CANDIDATE_BIRTHDATE_PROPERTY", "CANDIDATE_DEGREE_VOTE_PROPERTY",
+  "CANDIDATE_BIRTHDATE_PROPERTY", "CANDIDATE_HIGH_SCHOOL_VOTE_PROPERTY",
   "CANDIDATE_TEST_VOTE_PROPERTY", "CANDIDATE_COURSE_PROPERTY",
   "CANDIDATE_COURSE_PROPERTY_START", "CANDIDATE_COURSE_PROPERTY_END",
   "END_CANDIDATE_GENERAL_INFORMATION", "CANDIDATE_END_PROPERTY", "DIVEDER",
@@ -497,7 +497,7 @@ static const char *const yytname[] =
   "INT", "FLOAT", "DATE_VALUE", "STRING_VALUE", "ARROW", "$accept", "main",
   "Degree_Courses_Section", "Degre_Course", "Candidates_Section",
   "Candidate_Properties", "Candidate", "Fiscal_Code", "Birthdate",
-  "Degree_Vote", "Test_Vote", "Selected_Courses", "Courses",
+  "High_School_Vote", "Test_Vote", "Selected_Courses", "Courses",
   "Course_Selected", 0
 };
 #endif
@@ -1462,7 +1462,7 @@ yyreduce:
 
   case 12:
 #line 38 "parser.y"
-    {insert_candidate_degree_vote((yyvsp[(3) - (4)].integer));;}
+    {insert_candidate_high_school_vote((yyvsp[(3) - (4)].integer));;}
     break;
 
   case 13:

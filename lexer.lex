@@ -19,7 +19,7 @@ Equal_To ":"
 Candidate_Name_Property "Nome e Cognome"
 Candidate_Fiscal_Code_Property "Codice Fiscale"
 Candidate_Birthdate_Property  "Data di Nascita"
-Candidate_Degree_Vote_Property "Voto di Laurea"
+Candidate_High_School_Vote_Property "Voto di Diploma"
 Candidate_Test_Vote_Property "Voto di Test"
 Candidate_Course_Property "Iscrizione corsi di laurea"
 Candidate_Course_Property_Start "("
@@ -40,7 +40,7 @@ Comma ","
 <Candidates_Section>{Candidate_Name_Property} {return (CANDIDATE_NAME_PROPERTY); }
 <Candidates_Section>{Candidate_Fiscal_Code_Property} {return (CANDIDATE_FISCAL_CODE_PROPERTY); }
 <Candidates_Section>{Candidate_Birthdate_Property} {return (CANDIDATE_BIRTHDATE_PROPERTY); }
-<Candidates_Section>{Candidate_Degree_Vote_Property} {return (CANDIDATE_DEGREE_VOTE_PROPERTY); }
+<Candidates_Section>{Candidate_High_School_Vote_Property} {return (CANDIDATE_HIGH_SCHOOL_VOTE_PROPERTY); }
 <Candidates_Section>{Candidate_Test_Vote_Property} {return (CANDIDATE_TEST_VOTE_PROPERTY); }
 <Candidates_Section>{Candidate_Course_Property} {return (CANDIDATE_COURSE_PROPERTY); }
 <Candidates_Section>{Candidate_Course_Property_Start} {return (CANDIDATE_COURSE_PROPERTY_START); }

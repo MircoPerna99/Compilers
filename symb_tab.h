@@ -11,7 +11,7 @@ typedef struct ranking_course{
 typedef struct course{
 	char* name;
 	int amount_of_place_available;
-	int degree_vote;
+	int high_school_vote;
 	int test_vote;
 	struct ranking_course *ranking;
 	struct course* next;
@@ -27,7 +27,7 @@ typedef struct candidate{
 	char* name;
 	char* fiscal_code;
 	char* birth_date;
-	int degree_vote;
+	int high_school_vote;
 	int test_vote;
 	struct course_selected* courses;
 	struct candidate* next;
@@ -44,10 +44,10 @@ int insert_candidate();
 int insert_candidate_name(char *name);
 int insert_candidate_fiscal_code(char *fiscal_code);
 int insert_candidate_birthdate(char *birth_date);
-int insert_candidate_degree_vote(int degree_vote);
+int insert_candidate_high_school_vote(int high_school_vote);
 int insert_candidate_test_vote(int test_vote);
 int insert_candidate_course_selected(char *course);
-int insert_course(char *name_course, int amount_of_place_available, int degree_vote, int test_vote);
+int insert_course(char *name_course, int amount_of_place_available, int high_school_vote, int test_vote);
 
 void calculate_ranking();
 

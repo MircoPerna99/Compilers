@@ -5,19 +5,17 @@
 
 candidate *candidate_to_insert;
 
-float calculate_points(int degree_vote_candidate, int test_vote_candidate,  int degree_vote_course, int test_vote_course)
+float calculate_points(int high_school_vote_candidate, int test_vote_candidate,  int high_school_vote_course, int test_vote_course)
 {
-	return (((float)(degree_vote_candidate*degree_vote_course)/100)+ ((float)(degree_vote_course*test_vote_course)/100));
+	return (((float)(high_school_vote_candidate*high_school_vote_course)/100)+ ((float)(high_school_vote_course*test_vote_course)/100));
 }
 
 int check_date(char *data1, char *data2) {
     int g1, m1, a1, g2, m2, a2;
 
-    // Parsing delle date nel formato DD/MM/YYYY
     sscanf(data1, "%d/%d/%d", &g1, &m1, &a1);
     sscanf(data2, "%d/%d/%d", &g2, &m2, &a2);
 
-    // Confronto logico
     if (a1 != a2) return a1 - a2;
     if (m1 != m2) return m1 - m2;
     return g1 - g2;
@@ -36,6 +34,33 @@ int check_node(ranking_course *ranking, ranking_course *new_ranking)
 	else
 	{
 		return -1;
+	}
+}
+
+void check_course_data(course *new_course)
+{
+	if(new_course->amount_of_place_available<1 ||  new_course->amount_of_place_available>999)
+	{
+		printf("The number of available seats for course %s is not between 1 and 999.\n",new_course->name);
+		exit(1);
+	}
+
+	if(new_course->high_school_vote<0 ||  new_course->high_school_vote>100)
+	{
+		printf("The high school grade percentage for course %s is not between 0 and 100.\n", new_course->name);
+		exit(1);
+	}
+
+	if(new_course->test_vote<0 ||  new_course->test_vote>100)
+	{
+		printf("The test grade percentage for course %s is not between 0 and 100.\n", new_course->name);
+		exit(1);
+	}
+
+	if(new_course->high_school_vote+new_course->test_vote > 100)
+	{
+		printf("The sum of diploma grade percentage and test grade percentage for course %s is larger than 100\n", new_course->name);
+		exit(1);
 	}
 }
 
@@ -117,12 +142,18 @@ int insert_candidate_birthdate(char *birth_date)
 	return 1;
 }
 
-int insert_candidate_degree_vote(int degree_vote)
+int insert_candidate_high_school_vote(int high_school_vote)
 {
 	if (candidate_to_insert ==NULL)
 		return 0;
 
-	candidate_to_insert->degree_vote = degree_vote;
+	if(high_school_vote < 0 || high_school_vote > 100)
+	{
+		printf("Student %s's high school score is not between 0 and 100.\n", candidate_to_insert->name);
+		exit(1);
+	}
+	
+	candidate_to_insert->high_school_vote = high_school_vote;
 
 	return 1;
 }
@@ -132,6 +163,11 @@ int insert_candidate_test_vote(int test_vote)
 	if (candidate_to_insert ==NULL)
 		return 0;
 
+	if(test_vote < 0 || test_vote > 100)
+	{
+		printf("Student %s's test score is not between 0 and 100.\n", candidate_to_insert->name);
+		exit(1);
+	}
 	candidate_to_insert->test_vote = test_vote;
 	return 1;
 }
@@ -153,7 +189,7 @@ int insert_candidate_course_selected(char *course)
 }
 
 
-int insert_course(char *name_course, int amount_of_place_available, int degree_vote, int test_vote){	
+int insert_course(char *name_course, int amount_of_place_available, int high_school_vote, int test_vote){	
 
 	if(lookup_course(name_course)!=NULL){
 		printf("'%s' has just been insterted into the symbol table\n", name_course);
@@ -169,11 +205,13 @@ int insert_course(char *name_course, int amount_of_place_available, int degree_v
 
 	new_course->name = name_course;
 	new_course->amount_of_place_available = amount_of_place_available;
-	new_course->degree_vote = degree_vote;
+	new_course->high_school_vote = high_school_vote;
 	new_course->test_vote = test_vote;
 	new_course->next = hash_table_courses[hash_index];
-    
-    hash_table_courses[hash_index] = new_course;
+
+	check_course_data(new_course);
+
+	hash_table_courses[hash_index] = new_course;
 
 	return 1;
 }
@@ -200,7 +238,7 @@ void calculate_ranking(){
 							new_ranking->candidate_name = ptr->name;
 							new_ranking->fiscal_code = ptr->fiscal_code;
 							new_ranking->birth_date = ptr->birth_date;
-							new_ranking->score = calculate_points(ptr->degree_vote, ptr->test_vote, c->degree_vote, c->test_vote);
+							new_ranking->score = calculate_points(ptr->high_school_vote, ptr->test_vote, c->high_school_vote, c->test_vote);
 							
 							ranking_course *ranking = c->ranking;
 							if(ranking == NULL)
