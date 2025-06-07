@@ -1,0 +1,37 @@
+2021/22
+%%
+Medicina-> 500; 50; 50.
+Biologia-> 200; 75; 25.
+Fisica-> 50; 70; 30.
+Chimica -> 50; 35; 65.
+Informatica -> 100; 60; 40.
+Ingegneria Informatica -> 150; 50; 50.
+$$$
+Nome e Cognome: Maria Rosselli,
+Codice Fiscale: RSSMRA77L07A546F,
+Data di Nascita: 25/06/2004,
+Voto di Laurea: 100,
+Voto di Test: 88.
+Iscrizione corsi di laurea: (Medicina, Biologia).
+!!!
+Nome e Cognome: Francesco Amato,
+Codice Fiscale: MTAFNC70H01H070L,
+Data di Nascita: 09/09/2003,
+Voto di Laurea: 80,
+Voto di Test: 82.
+Iscrizione corsi di laurea: (Ingegneria Informatica, Fisica).
+!!!
+Nome e Cognome: Giuseppe Genovese,
+Codice Fiscale: GNVGPP77S15G273H,
+Data di Nascita: 11/10/2004,
+Voto di Laurea: 80,
+Voto di Test: 82.
+Iscrizione corsi di laurea: (Informatica, Fisica).
+!!!
+Nome e Cognome: Giorgia Conte,
+Codice Fiscale: CNTGRG80E60G273I,
+Data di Nascita: 11/10/2004,
+Voto di Laurea: 72,
+Voto di Test: 89.
+Iscrizione corsi di laurea: (Biologia, Chimica).
+!!!

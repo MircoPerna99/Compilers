@@ -1708,8 +1708,8 @@ void yyerror(char *s) {
 }
 int main() {
     if (yyparse()==0){
-        print_courses();
-        print_candidates();
+        calculate_ranking();
+        print_ranking();
     }
 }
 

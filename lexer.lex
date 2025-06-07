@@ -1,6 +1,6 @@
 %{
     #include "parser.tab.h"
-    int current_line = 0;
+    int current_line = 1;
 %}
 %option noyywrap
 %x lossyBig

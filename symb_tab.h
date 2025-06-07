@@ -2,6 +2,8 @@
 //structure of course entity
 typedef struct ranking_course{
 	char* candidate_name;
+	char* fiscal_code;
+	char* birth_date;
 	float score;
 	struct ranking_course* next;
 }ranking_course;
@@ -47,6 +49,8 @@ int insert_candidate_test_vote(int test_vote);
 int insert_candidate_course_selected(char *course);
 int insert_course(char *name_course, int amount_of_place_available, int degree_vote, int test_vote);
 
+void calculate_ranking();
+
 void print_candidates();
 void print_courses();
-
+void print_ranking();

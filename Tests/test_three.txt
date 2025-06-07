@@ -14,7 +14,14 @@ Iscrizione corsi di laurea: (Medicina, Biologia).
 Nome e Cognome: Giuseppe Genovese,
 Codice Fiscale: GNVGPP77S15G273H,
 Data di Nascita: 11/10/2004,
-Voto di Laurea: 72,
-Voto di Test: 89.
-Iscrizione corsi di laurea: (Informatica, Fisica).
+Voto di Laurea: 1,
+Voto di Test: 100.
+Iscrizione corsi di laurea: (Biologia, Fisica).
+!!!
+Nome e Cognome: Mirco Perna,
+Codice Fiscale: PRNMRC99D09G273P,
+Data di Nascita: 11/10/2004,
+Voto di Laurea: 70,
+Voto di Test: 70.
+Iscrizione corsi di laurea: (Biologia, Fisica).
 !!!

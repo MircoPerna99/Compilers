@@ -7,10 +7,37 @@ candidate *candidate_to_insert;
 
 float calculate_points(int degree_vote_candidate, int test_vote_candidate,  int degree_vote_course, int test_vote_course)
 {
-	return (((degree_vote_candidate*degree_vote_course)/100)+ ((degree_vote_course*test_vote_course)/100))
+	return (((float)(degree_vote_candidate*degree_vote_course)/100)+ ((float)(degree_vote_course*test_vote_course)/100));
 }
 
+int check_date(char *data1, char *data2) {
+    int g1, m1, a1, g2, m2, a2;
 
+    // Parsing delle date nel formato DD/MM/YYYY
+    sscanf(data1, "%d/%d/%d", &g1, &m1, &a1);
+    sscanf(data2, "%d/%d/%d", &g2, &m2, &a2);
+
+    // Confronto logico
+    if (a1 != a2) return a1 - a2;
+    if (m1 != m2) return m1 - m2;
+    return g1 - g2;
+}
+
+int check_node(ranking_course *ranking, ranking_course *new_ranking)
+{
+	if(ranking->score > new_ranking -> score)
+	{
+		return 1;
+	}
+	else if(ranking->score == new_ranking -> score)
+	{
+		return check_date(ranking->birth_date, new_ranking->birth_date) > 0 ? 1 : -1;
+	}
+	else
+	{
+		return -1;
+	}
+}
 
 unsigned int hash(char *id) {
 	int h=0;
@@ -106,11 +133,6 @@ int insert_candidate_test_vote(int test_vote)
 		return 0;
 
 	candidate_to_insert->test_vote = test_vote;
-	printf("%s\n",candidate_to_insert->name);
-	printf("%s\n",candidate_to_insert->fiscal_code);
-	printf("%s\n",candidate_to_insert->birth_date);
-	printf("%d\n",candidate_to_insert->degree_vote);
-	printf("%d\n",candidate_to_insert->test_vote);
 	return 1;
 }
 
@@ -130,7 +152,7 @@ int insert_candidate_course_selected(char *course)
 	return 1;
 }
 
-//Insert new course
+
 int insert_course(char *name_course, int amount_of_place_available, int degree_vote, int test_vote){	
 
 	if(lookup_course(name_course)!=NULL){
@@ -154,6 +176,73 @@ int insert_course(char *name_course, int amount_of_place_available, int degree_v
     hash_table_courses[hash_index] = new_course;
 
 	return 1;
+}
+
+void calculate_ranking(){
+	candidate *ptr;
+	ranking_course *new_ranking;
+	for(int i = 0; i<HASHSIZE;i++){
+		for(ptr = hash_table_candidates[i]; ptr!=NULL; ptr = ptr->next){
+					course_selected *candidate_courses_selected = ptr->courses;
+
+					while(candidate_courses_selected)
+					{
+						course *c = lookup_course(candidate_courses_selected->name);
+
+						if ((new_ranking = (ranking_course *)malloc(sizeof(*new_ranking)))==NULL)
+						{
+							printf("Error on calculate_ranking\n");
+							exit(1);
+						}
+
+						if(c != NULL)
+						{
+							new_ranking->candidate_name = ptr->name;
+							new_ranking->fiscal_code = ptr->fiscal_code;
+							new_ranking->birth_date = ptr->birth_date;
+							new_ranking->score = calculate_points(ptr->degree_vote, ptr->test_vote, c->degree_vote, c->test_vote);
+							
+							ranking_course *ranking = c->ranking;
+							if(ranking == NULL)
+							{
+								ranking = new_ranking;
+							}
+							else
+							{	
+
+								if(check_node(ranking, new_ranking)<0)
+								{
+									new_ranking->next = ranking;
+									ranking = new_ranking;
+								}
+								else
+								{
+									while(ranking->next != NULL)
+									{
+										if(check_node(ranking->next, new_ranking))
+										{
+											new_ranking->next = ranking->next;
+											ranking->next = new_ranking;
+											break;
+										}
+										else
+										{
+											ranking = ranking->next;
+										}
+									}
+
+									if(ranking->next == NULL)
+									{
+										ranking->next = new_ranking;
+									}
+								}
+							}
+							c->ranking = ranking;
+						}
+						candidate_courses_selected = candidate_courses_selected->next;
+					}
+			}
+	}
 }
 
 void print_candidates() {
@@ -181,6 +270,25 @@ void print_courses() {
 	for(int i = 0; i<HASHSIZE;i++){
 		for(ptr = hash_table_courses[i]; ptr!=NULL; ptr = ptr->next){
   	                printf("%s\n",ptr->name);
+		 }
+	}
+}
+
+void print_ranking()
+{
+	course *ptr;
+	printf("Ranking:\n");
+	for(int i = 0; i<HASHSIZE;i++){
+		for(ptr = hash_table_courses[i]; ptr!=NULL; ptr = ptr->next){
+				printf("%s", ptr->name);
+				ranking_course *ranking = ptr->ranking;
+  	            while(ranking != NULL)
+				{
+					printf("->(%s:%f)",ranking->candidate_name, ranking->score);
+
+					ranking = ranking->next;
+				}
+				printf("\n");
 		 }
 	}
 }

@@ -595,7 +595,7 @@ char *yytext;
 #line 1 "lexer.lex"
 #line 2 "lexer.lex"
     #include "parser.tab.h"
-    int current_line = 0;
+    int current_line = 1;
 #line 599 "lex.yy.c"
 
 #line 601 "lex.yy.c"
