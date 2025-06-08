@@ -12,33 +12,33 @@ Codice Fiscale: RSSMRA77L07A546F,
 Data di Nascita: 25/06/2004,
 Voto di Diploma: 100,
 Voto di Test: 88.
-Iscrizione corsi di laurea: (Medicina, Biologia).
+Iscrizione corsi di Laurea: (Medicina, Biologia).
 !!!
 Nome e Cognome: Francesco Amato,
 Codice Fiscale: MTAFNC70H01H070L,
 Data di Nascita: 09/09/2003,
 Voto di Diploma: 80,
 Voto di Test: 82.
-Iscrizione corsi di laurea: (Ingegneria Informatica, Fisica).
+Iscrizione corsi di Laurea: (Ingegneria Informatica, Fisica).
 !!!
 Nome e Cognome: Giuseppe Genovese,
 Codice Fiscale: GNVGPP77S15G273H,
 Data di Nascita: 11/10/2004,
-Voto di Diploma: 80,
+Voto di Diploma: 50,
 Voto di Test: 82.
-Iscrizione corsi di laurea: (Informatica, Fisica).
+Iscrizione corsi di Laurea: (Informatica, Fisica).
 !!!
 Nome e Cognome: Giorgia Conte,
 Codice Fiscale: CNTGRG80E60G273I,
 Data di Nascita: 11/10/2004,
 Voto di Diploma: 72,
 Voto di Test: 89.
-Iscrizione corsi di laurea: (Biologia, Chimica).
+Iscrizione corsi di Laurea: (Biologia, Chimica).
 !!!
 Nome e Cognome: Mirco Perna,
 Codice Fiscale: PRNMRC99D09G273P,
 Data di Nascita: 09/04/2004,
 Voto di Diploma: 100,
 Voto di Test: 90.
-Iscrizione corsi di laurea: (Medicina, Chimica).
+Iscrizione corsi di Laurea: (Medicina, Chimica).
 !!!

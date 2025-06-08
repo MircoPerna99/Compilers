@@ -10,7 +10,6 @@ Course_Of_Study_Parameters_Section "%%"
 Candidate_Parameters_Section "$$$"
 Integer 0|[1-9][0-9]*
 Fiscal_Code [A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z] 
-Candidate ([A-Z][a-z]*)([ ][A-Z][a-z]*)*
 String_Value ([A-Z][a-z]*)([ ][A-Z][a-z]*)*
 Date_Value (0[1-9]|1[0-9]|2[0-9]|3[01])\/(0[1-9]|1[0-2])\/[0-9]{4}
 Divider_Course_Requirements ";"
@@ -21,7 +20,7 @@ Candidate_Fiscal_Code_Property "Codice Fiscale"
 Candidate_Birthdate_Property  "Data di Nascita"
 Candidate_High_School_Vote_Property "Voto di Diploma"
 Candidate_Test_Vote_Property "Voto di Test"
-Candidate_Course_Property "Iscrizione corsi di laurea"
+Candidate_Course_Property "Iscrizione corsi di Laurea"
 Candidate_Course_Property_Start "("
 Candidate_Course_Property_End ")"
 Candidate_End_Propery "!!!"

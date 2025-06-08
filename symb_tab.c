@@ -67,8 +67,9 @@ void check_course_data(course *new_course)
 
 unsigned int hash(char *id) {
 	int h=0;
+	int a = 128;
 	for(;*id!='\0';id++){
-		h=(127*h+*id)%HASHSIZE;
+		h=(a*h+*id)%HASHSIZE;
 		}
 	return h;
 }
@@ -343,11 +344,14 @@ void print_ranking()
 		for(ptr = hash_table_courses[i]; ptr!=NULL; ptr = ptr->next){
 				fprintf(file,"%s", ptr->name);
 				ranking_course *ranking = ptr->ranking;
-  	            while(ranking != NULL)
+				int max_amount_of_place_available = ptr->amount_of_place_available;
+				int candidate_insert = 0;
+  	            while(ranking != NULL && candidate_insert < max_amount_of_place_available)
 				{
 					fprintf(file,"->(%s:%f)",ranking->candidate_name, ranking->score);
 
 					ranking = ranking->next;
+					candidate_insert = candidate_insert + 1;
 				}
 				fprintf(file,"\n");
 		 }

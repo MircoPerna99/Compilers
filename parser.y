@@ -24,10 +24,10 @@
 %locations
 
 %%
-main: ACADEMIC_YEAR DEGREE_COURSES_SECTION Degree_Courses_Section CANDIDATES_SECTION Candidates_Section{insert_academic_year($1);}
+Main: ACADEMIC_YEAR DEGREE_COURSES_SECTION Degree_Courses_Section CANDIDATES_SECTION Candidates_Section{insert_academic_year($1);}
 
-Degree_Courses_Section:  | Degree_Courses_Section Degre_Course
-Degre_Course: DEGREE_COURSE ARROW INT DIVEDER INT DIVEDER INT END_COURSE_REQUIREMENTS{insert_course($1, $3, $5, $7);} 
+Degree_Courses_Section:  | Degree_Courses_Section Degree_Course
+Degree_Course: DEGREE_COURSE ARROW INT DIVEDER INT DIVEDER INT END_COURSE_REQUIREMENTS{insert_course($1, $3, $5, $7);} 
 
 Candidates_Section: | Candidates_Section Candidate_Properties;
 Candidate_Properties: Candidate Fiscal_Code Birthdate High_School_Vote Test_Vote Selected_Courses CANDIDATE_END_PROPERTY {insert_candidate();}

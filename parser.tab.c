@@ -494,8 +494,8 @@ static const char *const yytname[] =
   "CANDIDATE_COURSE_PROPERTY_START", "CANDIDATE_COURSE_PROPERTY_END",
   "END_CANDIDATE_GENERAL_INFORMATION", "CANDIDATE_END_PROPERTY", "DIVEDER",
   "END_CANDIDATE_PROPERTY", "EQUAL_TO", "ACADEMIC_YEAR", "FISCAL_CODE",
-  "INT", "FLOAT", "DATE_VALUE", "STRING_VALUE", "ARROW", "$accept", "main",
-  "Degree_Courses_Section", "Degre_Course", "Candidates_Section",
+  "INT", "FLOAT", "DATE_VALUE", "STRING_VALUE", "ARROW", "$accept", "Main",
+  "Degree_Courses_Section", "Degree_Course", "Candidates_Section",
   "Candidate_Properties", "Candidate", "Fiscal_Code", "Birthdate",
   "High_School_Vote", "Test_Vote", "Selected_Courses", "Courses",
   "Course_Selected", 0
