@@ -247,10 +247,11 @@ void calculate_ranking(){
 							new_ranking->birth_date = ptr->birth_date;
 							new_ranking->score = calculate_points(ptr->high_school_vote, ptr->test_vote, c->high_school_vote, c->test_vote);
 							
-							ranking_course *ranking = c->ranking;
+							ranking_course *head = c->ranking;  
+							ranking_course *ranking = head; 
 							if(ranking == NULL)
 							{
-								ranking = new_ranking;
+								head = new_ranking;
 							}
 							else
 							{	
@@ -258,7 +259,7 @@ void calculate_ranking(){
 								if(check_node(ranking, new_ranking)<0)
 								{
 									new_ranking->next = ranking;
-									ranking = new_ranking;
+									head = new_ranking;
 								}
 								else
 								{
@@ -282,7 +283,7 @@ void calculate_ranking(){
 									}
 								}
 							}
-							c->ranking = ranking;
+							c->ranking = head;
 						}
 						candidate_courses_selected = candidate_courses_selected->next;
 					}
@@ -351,7 +352,7 @@ void print_ranking()
 					fprintf(file,"->(%s:%f)",ranking->candidate_name, ranking->score);
 
 					ranking = ranking->next;
-					candidate_insert = candidate_insert + 1;
+					candidate_insert++;
 				}
 				fprintf(file,"\n");
 		 }

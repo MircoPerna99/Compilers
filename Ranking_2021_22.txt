@@ -1,7 +1,7 @@
 Ranking:
-Ingegneria Informatica->(Francesco Amato:65.000000)
-Biologia->(Maria Rosselli:93.750000)->(Giorgia Conte:72.750000)
-Chimica->(Mirco Perna:57.750000)->(Giorgia Conte:47.950001)
-Medicina->(Maria Rosselli:75.000000)->(Mirco Perna:75.000000)
-Informatica->(Giuseppe Genovese:54.000000)
-Fisica->(Francesco Amato:77.000000)->(Giuseppe Genovese:56.000000)
+Ingegneria Informatica->(Simone Riva:69.500000)->(Francesco Amato:65.000000)
+Biologia->(Maria Rosselli:93.750000)->(Clara Benedetti:81.750000)->(Giorgia Conte:72.750000)->(Antonio Russo:70.500000)
+Chimica->(Mirco Perna:57.750000)->(Beatrice Longo:54.599998)->(Giorgia Conte:47.950001)
+Medicina->(Maria Rosselli:75.000000)->(Mirco Perna:75.000000)->(Giulia Testa:67.500000)
+Informatica->(Martina Costa:81.599998)->(Andrea Fontana:66.000000)->(Giuseppe Genovese:54.000000)
+Fisica->(Martina Costa:88.199997)->(Beatrice Longo:84.699997)->(Simone Riva:83.300003)
